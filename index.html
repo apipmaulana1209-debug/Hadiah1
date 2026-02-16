@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Patrick+Hand&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* WRAPPER FOTO */
+.image-wrapper{
+    position:relative;
+    display:inline-block;
+}
+
+/* SPARKLE */
+.sparkle{
+    position:absolute;
+    font-size:14px;
+    pointer-events:none;
+    animation:blink 1.5s ease-in-out forwards;
+}
+
+@keyframes blink{
+    0%{opacity:0; transform:scale(0.5);}
+    50%{opacity:1; transform:scale(1.2);}
+    100%{opacity:0; transform:scale(0.5);}
+}
+
+body{
+    font-family:'Poppins', sans-serif;
+    height:100vh;
+    overflow:hidden;
+
+    background: linear-gradient(
+        -45deg,
+        #ff7ecb,
+        #ff5fae,
+        #ff8fcf,
+        #ff6fb5
+    );
+    background-size:400% 400%;
+    animation:gradientMove 12s ease infinite;
+
+    color:white;
+    text-shadow:
+        0 0 5px rgba(255,255,255,0.8),
+        0 0 10px rgba(255,255,255,0.6),
+        0 0 15px rgba(255,182,217,0.8);
+}
+
+/* PAGE */
+.page{
+    width:100%;
+    height:100vh;
+    position:absolute;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:30px;
+    transition:1s;
+    opacity:0;
+    pointer-events:none;
+}
+
+#page1{opacity:1; pointer-events:auto;}
+
+#page3{
+    justify-content:flex-start;
+    align-items:center;
+    overflow-y:auto;
+    padding-top:60px;
+    padding-bottom:60px;
+}
+
+/* IMAGE */
+img{
+    width:170px;
+    height:170px;
+    object-fit:cover;
+    border-radius:15px;
+    margin-bottom:25px;
+    box-shadow:0 0 20px rgba(255,255,255,0.6);
+}
+
+/* BUTTON */
+button{
+    padding:10px 25px;
+    border:none;
+    border-radius:25px;
+    background:white;
+    color:#d63384;
+    font-size:14px;
+    cursor:pointer;
+}
+
+/* PAGE 2 */
+.choice{
+    display:flex;
+    gap:40px;
+    margin-top:30px;
+}
+
+.choice button{
+    font-size:16px;
+    padding:10px 22px;
+    border-radius:12px;
+    background:white;
+    color:#ff4da6;
+    border:none;
+    cursor:pointer;
+    font-weight:600;
+    transition:0.3s;
+    box-shadow:
+        0 0 8px rgba(255,255,255,0.9),
+        0 0 18px rgba(255,105,180,0.8);
+    text-shadow:
+        0 0 6px rgba(255,105,180,0.8),
+        0 0 12px rgba(255,182,217,0.9);
+}
+
+.choice button:hover{
+    transform:scale(1.1);
+    box-shadow:
+        0 0 15px rgba(255,255,255,1),
+        0 0 30px rgba(255,182,217,1),
+        0 0 45px rgba(255,105,180,1);
+}
+
+.choice button:active{
+    transform:scale(0.95);
+}
+
+/* LONG TEXT */
+.longtext{
+    max-width:650px;
+    font-family:'Patrick Hand', cursive;
+    font-size:20px;
+    line-height:1.9;
+    text-shadow:
+        0 0 6px rgba(255,255,255,0.9),
+        0 0 12px rgba(255,255,255,0.6),
+        0 0 20px rgba(255,182,217,0.9);
+}
+
+/* LOVE */
+.love{
+    position:fixed;
+    top:-50px;
+    animation:fall linear forwards;
+    pointer-events:none;
+}
+/* TOUCH EFFECT */
+.touch-effect{
+    position:fixed;
+    pointer-events:none;
+    font-size:18px;
+    font-weight:bold;
+    animation:touchFade 0.8s ease-out forwards;
+}
+
+@keyframes touchFade{
+    0%{
+        opacity:1;
+        transform:scale(1) translateY(0);
+    }
+    100%{
+        opacity:0;
+        transform:scale(1.8) translateY(-20px);
+    }
+}
+
+@keyframes fall{
+    to{transform:translateY(110vh) rotate(360deg);}
+}
+
+@keyframes gradientMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="page" id="page1">
+    <img src="hai.gif">
+    <button onclick="toPage2()">Klik Disini</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+    <h1 style="font-size:26px;">
+        hari ini kamu ulang<br>tahun ya?
+    </h1>
+
+    <div class="choice">
+        <button id="noBtn">NO</button>
+        <button onclick="toPage3()">YES</button>
+    </div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+    <div class="image-wrapper" id="sparkleArea">
+        <img src="findift.jpg">
+    </div>
+
+    <div class="longtext">
+        🥳 HAPPY BIRTHDAY YAAA KAMUU 🎉🎂<br><br>
+        nggak kerasa ya, waktu cepet banget jalann wkwkwk. rasanya baru kemarinn kita kenal, ketawa karena hal receh, ngetroll pas main, walaupun sempet asing, ujung-ujungnya kita tetep mabar lagi. dan sekarang kamu udah duluan aja nii jadi umur 17.<br><br>
+
+di umur yang sekarang ini, aku cuma mau bilang makasih banget. makasih udah jadi temen yang selalu ada. makasih udah jadi orang yang bisa diajak cerita apa aja, dari hal penting sampe hal paling gak masuk akal sekalipun. nggak semua orang bisa jadi “rumah” buat temennya sendiri, tapi kamu salah satu yang bisa bikin orang ngerasa nyaman cuma dengan jadi diri kamu sendiri.<br><br>
+
+semoga di umur kamu yang baru ini, semua yang kamu semogakan pelan-pelan jadi nyata. yang lagi kamu perjuangin semoga dipermudah. yang lagi kamu takutkan semoga diganti sama keberanian. yang lagi kamu raguin semoga berubah jadi keyakinan. dan yang lagi kamu sedihin semoga pelan-pelan sembuh.<br><br>
+
+aku tau kamu itu orangnya kuat, walaupun kadang sok kuat. kamu itu baik, walaupun kadang sok jahat. kamu itu peduli, walaupun sering pura-pura cuek. jangan pernah ngerasa kamu sendirian ya. seenggaknya, selama aku masih ada, kamu punya temen yang siap dengerin cerita kamu walaupun kadang aku cuma bisa jawab “oohhh gitu” atau “busettt” atau "sabarr" 😅<br><br>
+
+semoga kamu makin dewasa tanpa kehilangan sisi kamu sendiri. makin pinter tapi ngga sombong. makin cantikk imut lucu baikkk. tapi yang paling penting, semoga kamu tetep jadi kamu yang sekarang, yang apa adanya, yang tulus, yang gak dibuat-buat.<br><br>
+
+kalau tahun kemarin berat, semoga tahun ini lebih ringan. kalau kemarin banyak nangisnya, semoga sekarang lebih banyak ketawanya. dan kalau suatu saat kamu ngerasa capek banget, inget! kamu nggak harus selalu keliatan kuat di depan semua orang!<br><br>
+
+intinya… aku bangga bisa kenal kamu. bangga bisa jadi bagian kecil dari hidup kamu. dan semoga kita masih bisa terus bareng jadi temen yang saling support, saling jahilin, saling ngingetin, dan saling jaga yaaa.<br><br>
+
+sekali lagi, HAPPY BIRTHDAY YAA 🎂✨<br>
+semoga panjang umur, sehat selalu, pemasukan lancar, hatinya tenang, dan bahagianya infinity.. <br>
+;)
+    </div>
+    <!-- Tambahkan di dalam <div class="page" id="page3">, di bawah <div class="longtext"> -->
+<div style="margin-top:30px;">
+    <button onclick="window.open('https://pilih-hadiah.vercel.app/', '_blank')"
+        style="font-size:16px; padding:12px 25px; border-radius:20px; background:#ff4da6; color:white; border:none; cursor:pointer; box-shadow:0 0 10px rgba(255,255,255,0.8);">
+        next 
+    </button>
+</div>
+</div>
+
+<audio id="music" src="notalot.mp3" loop></audio>
+
+<script>
+let yesClickCount = 0;
+const yesMaxJumps = 3;
+
+function toPage2(){
+    switchPage("page1","page2");
+    document.getElementById("music").play();
+}
+
+function toPage3(){
+    const yesBtn = document.querySelector("#page2 .choice button:nth-child(2)");
+
+    if(yesClickCount < yesMaxJumps){
+        moveButtonRandom(yesBtn);
+        yesClickCount++;
+        return;
+    }
+
+    switchPage("page2","page3");
+    document.body.style.overflow="auto";
+    startLove();
+    startSparkle();
+}
+
+function switchPage(from,to){
+    document.getElementById(from).style.opacity="0";
+    document.getElementById(from).style.pointerEvents="none";
+
+    setTimeout(()=>{
+        document.getElementById(to).style.opacity="1";
+        document.getElementById(to).style.pointerEvents="auto";
+    },500);
+}
+
+function startLove(){
+    const items=["🎂","🎈","💖","✨","🎀"];
+    setInterval(()=>{
+        let el=document.createElement("div");
+        el.className="love";
+        el.innerHTML=items[Math.floor(Math.random()*items.length)];
+        el.style.left=Math.random()*100+"vw";
+        el.style.fontSize=(16+Math.random()*20)+"px";
+        el.style.animationDuration=(6+Math.random()*4)+"s";
+        document.body.appendChild(el);
+        setTimeout(()=>{el.remove();},10000);
+    },700);
+}
+
+function startSparkle(){
+    const area=document.getElementById("sparkleArea");
+
+    setInterval(()=>{
+        let sparkle=document.createElement("div");
+        sparkle.className="sparkle";
+        sparkle.innerHTML="✨";
+
+        sparkle.style.left=Math.random()*area.offsetWidth+"px";
+        sparkle.style.top=Math.random()*area.offsetHeight+"px";
+
+        area.appendChild(sparkle);
+        setTimeout(()=>{sparkle.remove();},1500);
+    },400);
+}
+
+const noBtn=document.getElementById("noBtn");
+const page2=document.getElementById("page2");
+
+noBtn.addEventListener("mouseover",moveButton);
+noBtn.addEventListener("touchstart",moveButton);
+
+function moveButton(){
+    const maxX=page2.offsetWidth-noBtn.offsetWidth;
+    const maxY=page2.offsetHeight-noBtn.offsetHeight;
+
+    const randomX=Math.random()*maxX;
+    const randomY=Math.random()*maxY;
+
+    noBtn.style.position="absolute";
+    noBtn.style.left=randomX+"px";
+    noBtn.style.top=randomY+"px";
+}
+
+function moveButtonRandom(btn){
+    const vw=window.innerWidth-btn.offsetWidth;
+    const vh=window.innerHeight-btn.offsetHeight;
+
+    const x=Math.random()*vw;
+    const y=Math.random()*vh;
+
+    btn.style.position="absolute";
+    btn.style.left=x+"px";
+    btn.style.top=y+"px";
+}
+function createTouchEffect(x,y){
+
+    const colors = [
+        "#ffffff",
+        "#ff4da6",
+        "#ff85c1",
+        "#ffd6f5",
+        "#ffe066",
+        "#a0e7ff",
+        "#b28dff"
+    ];
+
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+    const el = document.createElement("div");
+    el.className = "touch-effect";
+    el.innerHTML = "17";
+
+    el.style.left = x + "px";
+    el.style.top = y + "px";
+
+    // warna text
+    el.style.color = randomColor;
+
+    // glow ikut warna
+    el.style.textShadow = `
+        0 0 6px ${randomColor},
+        0 0 12px ${randomColor},
+        0 0 20px ${randomColor}
+    `;
+
+    document.body.appendChild(el);
+
+    setTimeout(()=>{
+        el.remove();
+    },800);
+}
+// Klik mouse
+document.addEventListener("click",(e)=>{
+    createTouchEffect(e.clientX,e.clientY);
+});
+
+// Touch / geser HP
+document.addEventListener("touchmove",(e)=>{
+    const touch = e.touches[0];
+    createTouchEffect(touch.clientX,touch.clientY);
+});
+</script>
+
+</body>
+</html>
